@@ -6,7 +6,7 @@ import Shop from '../views/Shop.vue'
 import User from '../views/User.vue'
 import Product from '../views/Product.vue'
 import Login from '../views/Login.vue'
-import Signup from '../views/Signup.vue'
+import AddAdmin from '../views/AddAdmin.vue'
 import AddProduct from '../views/AddProduct.vue'
 
 
@@ -44,9 +44,9 @@ const routes = [
     component: User
   },
   {
-    path: '/signup',
-    name: 'Signup',
-    component: Signup
+    path: '/addAdmin',
+    name: 'AddAdmin',
+    component: AddAdmin
   },
   {
     path: '/addProduct',

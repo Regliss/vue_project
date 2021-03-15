@@ -6,7 +6,7 @@
 			</h2>
 		</router-link>
 		<p>
-			{{productObject.price}}
+			{{productObject.price | formatPriceDecimal |formatPrice}}
 		</p>
 	</div>
 </template>
@@ -17,7 +17,12 @@ export default {
   name: 'ProductItem',
   props: {
         productObject: Object
-  }
+  },
+  filters:{
+  	formatPriceDecimal: function(value) {
+  		return value.toFixed(2);
+  	}
+  },
 }
 </script>
 

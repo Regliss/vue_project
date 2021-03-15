@@ -6,6 +6,9 @@
 				<p>Nom :{{user.firstName}}</p>
 				<p>Prénom :{{user.lastName}}</p>
 				<p>Mail :{{user.email}}</p>
+				<router-link to="/AddAdmin" custom v-slot="{ navigate }">
+      				<button @click="navigate" @keypress.enter="navigate" role="link">Ajouter un admin</button>
+  				</router-link> | 
 				<button @click="logout">Se déconnecter</button>
 			</div>
 		</div>
