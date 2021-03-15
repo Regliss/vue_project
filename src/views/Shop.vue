@@ -2,7 +2,11 @@
 	<div class="page__shop">
 		<TitlePage title="Mon Eshop"/>
 		<ProductsGrid :productsArray="productsFromApi" />
-	</div>
+    <!-- <router-link to="/addProduct">Ajouter un produit</router-link> -->
+  <router-link to="/addProduct" custom v-slot="{ navigate }">
+      <button @click="navigate" @keypress.enter="navigate" role="link">Ajouter un produit</button>
+  </router-link>
+  </div>
 </template>
 
 <script>
