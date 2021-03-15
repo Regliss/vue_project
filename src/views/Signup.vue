@@ -80,9 +80,9 @@ export default {
     			this.messageError = data.message;
     		}
     		else {
-    			console.log(data);
-    			let token = data.token;
-    			localStorage.setItem('token', token);
+    			// console.log(data);
+    			// let token = data.token;
+    			// localStorage.setItem('token', token);
     			this.$router.push('/account');
     		}
     	})
