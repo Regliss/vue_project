@@ -8,6 +8,8 @@ import Product from '../views/Product.vue'
 import Login from '../views/Login.vue'
 import AddAdmin from '../views/AddAdmin.vue'
 import AddProduct from '../views/AddProduct.vue'
+import AuthGuard from '../middleware/auth.js'
+import Cart from '../views/Cart.vue'
 
 
 Vue.use(VueRouter)
@@ -39,9 +41,24 @@ const routes = [
     component: Login
   },
   {
+    path: '/cart',
+    name: 'Cart',
+    component: Cart
+  },
+  {
     path: '/account',
     name: 'User',
-    component: User
+    component: User,
+    beforeEnter(to, from, next) {
+      if (!localStorage.getItem('token')) {
+        next({
+          name:"Login"
+        })
+      }
+      else {
+        next();
+      }
+    }
   },
   {
     path: '/addAdmin',

@@ -26,4 +26,10 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.products__grid {
+  display: flex;
+  align-items: center;
+  justify-content : center;
+  
+}
 </style>
