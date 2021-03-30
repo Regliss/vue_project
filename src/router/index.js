@@ -12,6 +12,8 @@ import AuthGuard from '../middleware/auth.js'
 import Cart from '../views/Cart.vue'
 import Signup from '../views/Signup.vue'
 import UpdateUser from '../views/UpdateUser.vue'
+import Cancel from '../views/Cancel.vue'
+import Success from '../views/Success.vue'
 
 
 Vue.use(VueRouter)
@@ -40,7 +42,17 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: Login,
+    beforeEnter(to, from, next) {
+      if (localStorage.getItem('token')) {
+        next({
+          name:"User"
+        })
+      }
+      else {
+        next();
+      }
+    }
   },
   {
     path: '/cart',
@@ -71,6 +83,16 @@ const routes = [
     path: '/addAdmin',
     name: 'AddAdmin',
     component: AddAdmin
+  },
+  {
+    path: '/success',
+    name: 'Success',
+    component: Success
+  },
+  {
+    path: '/cancel',
+    name: 'Cancel',
+    component: Cancel
   },
   {
     path: '/updateUser',

@@ -6,19 +6,19 @@
       <b-form @submit.prevent="update">
         <b-form-group>
           <label htmlFor="lastName">Nom :</label>
-          <b-input name="lastName" v-model="updateUser.lastName" :placeholder="updateUser.lastName"/>
+          <b-input name="lastName" v-model="lastName"/>
         </b-form-group>
         <b-form-group>
           <label htmlFor="firstName">Prénom :</label>
-          <b-input name="firstName" v-model="updateUser.firstName" :placeholder="updateUser.firstName"/>
+          <b-input name="firstName" v-model="firstName"/>
         </b-form-group>
 				<b-form-group>
           <label htmlFor="address">Adresse :</label>
-          <b-input name="address" v-model="updateUser.address" :placeholder="updateUser.address"/>
+          <b-input name="address" v-model="address"/>
         </b-form-group>
 				<b-form-group>
           <label htmlFor="phone">Téléphone :</label>
-          <b-input name="phone" v-model="updateUser.phone" :placeholder="updateUser.phone"/>
+          <b-input name="phone" v-model="phone"/>
         </b-form-group>
         <!-- <router-link to="/account"> -->
           <input type="submit"></input>
@@ -54,6 +54,7 @@ export default {
   methods: {
     update: function() {
       const token = localStorage.getItem('token');
+      console.log(this.firstName);
       const body = {
         firstName: this.firstName,
         lastName: this.lastName,
@@ -101,6 +102,10 @@ export default {
   		})
   		.then(res=>res.json())
       .then(data=>{
+      this.lasttName = data.lastName;
+      this.firstName = data.firstName;
+      this.adress = data.address;
+      this.phone = data.phone;
       this.updateUser = data;
       })
     .then(err=>console.log(err));

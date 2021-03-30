@@ -109,13 +109,8 @@ export default {
 	    if (result.error) {
 	      console.log(result.error);
 	    }
-	  }
-  },
-  filters:{
-  	formatPriceDecimal: function(value) {
-  		return value.toFixed(2);
-  	}
-  },
+	}
+  }
 }
 </script>
 
