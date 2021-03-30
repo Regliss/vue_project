@@ -83,17 +83,21 @@ export default {
 		},
 		getCartTotal(card) {
 			//Montant total du panier
-			let total = card.reduce(
-				(total, item) => total + (item.qty * item.price), 0
-			);
-			return total;
+			if (card) {
+				let total = card.reduce(
+					(total, item) => total + (item.qty * item.price), 0
+				);
+				return total;	
+			}
 		},
 		getCartCount(card) {
 			//nombre de qty dans le panier
-			let total = card.reduce(
-				(total, item) => total + item.qty, 0
-			);
-			return total;
+			if (card) {
+				let total = card.reduce(
+					(total, item) => total + item.qty, 0
+				);
+				return total;	
+			}
 		}
 	}
 }

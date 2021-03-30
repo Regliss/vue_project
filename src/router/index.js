@@ -10,28 +10,30 @@ import AddAdmin from '../views/AddAdmin.vue'
 import AddProduct from '../views/AddProduct.vue'
 import AuthGuard from '../middleware/auth.js'
 import Cart from '../views/Cart.vue'
+import Signup from '../views/Signup.vue'
+import UpdateUser from '../views/UpdateUser.vue'
 
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/contact',
-    name: 'Contact',
-    component: Contact
-  },
+  // {
+  //   path: '/',
+  //   name: 'Home',
+  //   component: Home
+  // },
+  // {
+  //   path: '/contact',
+  //   name: 'Contact',
+  //   component: Contact
+  // },
   {
     path: '/product/:id',
     name: 'Product',
     component: Product
   },
   {
-    path: '/shop',
+    path: '/',
     name: 'Shop',
     component: Shop
   },
@@ -44,6 +46,11 @@ const routes = [
     path: '/cart',
     name: 'Cart',
     component: Cart
+  },
+  {
+    path: '/signup',
+    name: 'Signup',
+    component: Signup
   },
   {
     path: '/account',
@@ -64,6 +71,11 @@ const routes = [
     path: '/addAdmin',
     name: 'AddAdmin',
     component: AddAdmin
+  },
+  {
+    path: '/updateUser',
+    name: 'UpdateUser',
+    component: UpdateUser
   },
   {
     path: '/addProduct',

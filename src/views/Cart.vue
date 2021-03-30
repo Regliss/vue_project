@@ -8,8 +8,8 @@
 					<b-th>Image</b-th>
 					<b-th>Quantity</b-th>
 					<b-th>Price</b-th>
-					<b-th></b-th>
-					<b-th></b-th>
+					<b-th>-1</b-th>
+					<b-th>+1</b-th>
 					<b-th>Total</b-th>
 					<b-th>Action</b-th>
 				</b-tr>
@@ -33,17 +33,20 @@
 				</b-tr>
 			</b-tbody>
 		</b-table-simple>
-		<div>
+		<div v-if="cartArray">
 			Quantité Totale : {{calcQty}}
 		</div>
-		<div>
+		<div v-if="cartArray">
 			Prix Totale : {{calcTotal | formatPriceDecimal |formatPrice}}
 		</div>
-		<b-button variant="danger" @click="clearShopCart()">Supprimer le panier</b-button>
+		<b-button variant="danger" @click="clearShopCart()">Supprimer le panier</b-button> | 
+		<b-button @click="checkout()">Payer</b-button>
 	</div>
 </template>
 
 <script>
+import { loadStripe } from '@stripe/stripe-js';
+const stripePromise = loadStripe('pk_test_51IYB3kKHE4A4HHrOPwry6jr7QSnFpODKJliEseS4NYAxmsuAnRfVkNgfdDcSEsMPPOqCEc5NhCGowDFhoy5D9zlu00jW1rgElH');
 import Cart from "../mixins/Cart";
 export default {
 
@@ -86,13 +89,33 @@ export default {
   	clearShopCart: function() {
   		this.clearCart();
   		this.cartArray = this.getCart();
-  	}
+  	},
+	checkout: async function(){
+	  	const stripe = await stripePromise;
+	  	const response = await fetch('http://localhost:3000/api/v1/create-checkout-session', { 
+	  		method: 'POST',
+	  		headers: {
+	  			"Content-type":"application/json"
+	  		},
+	  		body:JSON.stringify({
+	  			amount:this.calcTotal.toFixed(2) * 100
+	  		})
+	  	});
+	  	const session = await response.json();
+	  	const result = await stripe.redirectToCheckout({
+	      sessionId: session.id,
+	    });
+	     console.log(result);
+	    if (result.error) {
+	      console.log(result.error);
+	    }
+	  }
   },
   filters:{
   	formatPriceDecimal: function(value) {
   		return value.toFixed(2);
   	}
-  }
+  },
 }
 </script>
 

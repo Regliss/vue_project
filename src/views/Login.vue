@@ -1,18 +1,24 @@
 <template>
 	<div class="login__form">
-		<form @submit.prevent="login">
-			<div class="form__group">
+		<b-form @submit.prevent="login">
+			<b-form-group>
 				<label htmlFor="email">Mail :</label>
-				<input type="email" name="email" v-model="email"/>
-			</div>
-			<div class="form__group">
+				<b-form-input type="email" name="email" v-model="email"/>
+			</b-form-group>
+			<b-form-group>
 				<label htmlFor="password">Password :</label>
-				<input type="password" name="password" v-model="password"/>
-			</div>
-			<div class="form__group">
-				<input type="submit" name="se connecter">
-			</div>
-		</form>
+				<b-form-input type="password" name="password" v-model="password"/>
+			</b-form-group>
+			<b-form-group>
+				<b-button type="submit" name="se connecter">Se Connecter</b-button>
+			</b-form-group>
+		</b-form>
+		<p></p>
+		<router-link to="/signup">
+			<b-form-group>
+			<b-button>Inscription</b-button>
+			</b-form-group>
+  		</router-link>
 		<p v-if="messageError">
 			{{messageError}}
 		</p>
@@ -65,4 +71,10 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.login__form {
+        font-family: 16px;
+        margin: 0 auto;
+        max-width: 400px;
+        width: 100%;
+    }
 </style>

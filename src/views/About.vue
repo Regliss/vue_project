@@ -19,7 +19,7 @@ export default {
   },
   data: function() {
   	return {
-  	myObject: {id: 44, "title": "titre", "price": 20}
+  	myObject: {"title": "titre", "price": 20}
   	}
   },
   methods: {

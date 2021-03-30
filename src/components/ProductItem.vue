@@ -4,7 +4,7 @@
 	    :img-src="productObject.image"
 	    img-top
 	    tag="article"
-	    style="max-width: 20rem;"
+	    style=""
 	    class="mb-2">
 		<router-link :to="{name:'Product',params:{id:productObject._id}}">
 			<h2>
@@ -46,7 +46,7 @@ export default {
 
 <style lang="css" scoped>
 .product__item {
-	width:50%;
-    margin:10px auto;
+	width:15%;
+    margin:10px;
 }
 </style>
