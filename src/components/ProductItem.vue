@@ -16,7 +16,10 @@
 		</p>
 		<!-- <p><img :src="productObject.image"></p> -->
 		<p>
-			<button @click="addItemToCart(productObject)">Ajouter au panier</button>
+			<b-button @click="addItemToCart(productObject)">Ajouter au panier</b-button>
+		</p>
+		<p>
+			<b-button @click="addItemToWishList(productObject)" >Ajouter à la wishlist</b-button>
 		</p>
 	</b-card>
 	</div>
@@ -24,17 +27,24 @@
 
 <script>
 import Cart from '../mixins/Cart';
+import WishList from '../mixins/WishList';
 export default {
 
   name: 'ProductItem',
-  mixins:[Cart],
+  mixins:[Cart, WishList],
   props: {
         productObject: Object
   },
   methods: {
   	addItemToCart: function(product) {
   		this.addToCart(product)
-  	}
+  	},
+	addItemToWishList: function(product){
+	    this.addToWishList(product)
+	},
+	clearItemWishList: function(){
+	    this.clearWishList()
+	},
   },
   filters:{
   	formatPriceDecimal: function(value) {

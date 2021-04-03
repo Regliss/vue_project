@@ -15,16 +15,17 @@ import UpdateUser from '../views/UpdateUser.vue'
 import Cancel from '../views/Cancel.vue'
 import Success from '../views/Success.vue'
 import UsersCRUD from '../views/UsersCRUD.vue'
+import WishList from '../views/WishList.vue'
 
 
 Vue.use(VueRouter)
 
 const routes = [
-  // {
-  //   path: '/',
-  //   name: 'Home',
-  //   component: Home
-  // },
+  {
+    path: '/wishList',
+    name: 'WishList',
+    component: WishList
+  },
   {
     path: '/usersCRUD',
     name: 'UsersCRUD',
