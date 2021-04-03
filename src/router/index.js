@@ -14,6 +14,7 @@ import Signup from '../views/Signup.vue'
 import UpdateUser from '../views/UpdateUser.vue'
 import Cancel from '../views/Cancel.vue'
 import Success from '../views/Success.vue'
+import UsersCRUD from '../views/UsersCRUD.vue'
 
 
 Vue.use(VueRouter)
@@ -24,11 +25,11 @@ const routes = [
   //   name: 'Home',
   //   component: Home
   // },
-  // {
-  //   path: '/contact',
-  //   name: 'Contact',
-  //   component: Contact
-  // },
+  {
+    path: '/usersCRUD',
+    name: 'UsersCRUD',
+    component: UsersCRUD
+  },
   {
     path: '/product/:id',
     name: 'Product',
@@ -57,7 +58,17 @@ const routes = [
   {
     path: '/cart',
     name: 'Cart',
-    component: Cart
+    component: Cart,
+    beforeEnter(to, from, next) {
+      if (!localStorage.getItem('token')) {
+        next({
+          name:"Login"
+        })
+      }
+      else {
+        next();
+      }
+    }
   },
   {
     path: '/signup',

@@ -2,7 +2,6 @@
 	<div class="update__account">
 		<TitlePage title="Modifier mes informations"/>
 		<div>
-			<!-- <div class="user__info" v-if="updateUser"> -->
       <b-form @submit.prevent="update">
         <b-form-group>
           <label htmlFor="lastName">Nom :</label>
@@ -20,9 +19,7 @@
           <label htmlFor="phone">Téléphone :</label>
           <b-input name="phone" v-model="phone"/>
         </b-form-group>
-        <!-- <router-link to="/account"> -->
           <input type="submit"></input>
-        <!-- </router-link> -->
       </b-form>
       <p></p>
 		</div>		
@@ -76,15 +73,7 @@ export default {
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        if (!data.auth) {
-          this.messageError = data.message;
-        }
-        else {
-          console.log(data);
-          let token = data.token;
-          localStorage.setItem('token', token);
-          // this.$router.push('/account');
-        }
+        // this.$router.push('/account');
       })
       .catch(err => {
         console.log(err)
@@ -102,9 +91,9 @@ export default {
   		})
   		.then(res=>res.json())
       .then(data=>{
-      this.lasttName = data.lastName;
+      this.lastName = data.lastName;
       this.firstName = data.firstName;
-      this.adress = data.address;
+      this.address = data.address;
       this.phone = data.phone;
       this.updateUser = data;
       })

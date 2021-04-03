@@ -7,8 +7,8 @@
       		<!-- <router-link to="/">Home</router-link> |
       		<router-link to="/about">About</router-link> | -->
           <router-link to="/">Shop</router-link> |
-          <router-link to="/contact">Contact</router-link> |
-          <router-link to="/account">User</router-link> |
+          <router-link to="/account">Profil</router-link> |
+          <router-link to="/usersCRUD">Users CRUD</router-link> |
           <router-link to="/login">Login</router-link>  |
           <router-link to="/cart">Mon panier</router-link>
     	</div>
