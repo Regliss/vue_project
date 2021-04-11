@@ -17,6 +17,7 @@
             <b-th>Adresse</b-th>
             <b-th>Téléphone</b-th>
             <b-th>Email</b-th>
+            <b-th>Admin</b-th>
             <b-th>Actions</b-th>
           </b-tr>
         </b-thead>
@@ -28,6 +29,7 @@
             <b-td> {{ user.address }} </b-td>
             <b-td> {{ user.phone }} </b-td>
             <b-td> {{ user.email }} </b-td>
+            <b-td> {{ user.isAdmin }} </b-td>
             <b-td>
               <router-link to="/updateUser" custom v-slot="{ navigate }">
                 <b-button variant="info" @click="navigate" @keypress.enter="navigate" role="link">Modifier</b-button>
