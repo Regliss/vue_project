@@ -10,7 +10,7 @@
 				<b-form-input type="password" name="password" v-model="password"/>
 			</b-form-group>
 			<b-form-group>
-				<b-button type="submit" name="se connecter">Se Connecter</b-button>
+				<button type="submit" name="se connecter">Se Connecter</button>
 			</b-form-group>
 		</b-form>
 		<p></p>

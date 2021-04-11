@@ -1,25 +1,27 @@
 <template>
-	<div class="update__account">
-		<TitlePage title="Modifier mes informations"/>
+	<div class="update__product">
+		<TitlePage title="Modifier le produit"/>
 		<div>
       <b-form @submit.prevent="update">
         <b-form-group>
-          <label htmlFor="lastName">Nom :</label>
-          <b-input name="lastName" v-model="lastName"/>
+          <label htmlFor="title">Titre :</label>
+          <b-input name="title" v-model="title"/>
         </b-form-group>
         <b-form-group>
-          <label htmlFor="firstName">Prénom :</label>
-          <b-input name="firstName" v-model="firstName"/>
+          <label htmlFor="price">Prix :</label>
+          <b-input name="price" v-model="price"/>
         </b-form-group>
-				<b-form-group>
-          <label htmlFor="address">Adresse :</label>
-          <b-input name="address" v-model="address"/>
+		<b-form-group>
+          <label htmlFor="description">Description :</label>
+          <b-input name="description" v-model="description"/>
         </b-form-group>
-				<b-form-group>
-          <label htmlFor="phone">Téléphone :</label>
-          <b-input name="phone" v-model="phone"/>
+		<b-form-group>
+          <label htmlFor="image">Image :</label>
+          <b-input name="image" v-model="image"/>
         </b-form-group>
+		<b-form-group>
           <input type="submit"></input>
+        </b-form-group>
       </b-form>
       <p></p>
 		</div>		
@@ -29,36 +31,29 @@
 <script>
 import VueJwtDecode from 'vue-jwt-decode';
 import TitlePage from "../components/TitlePage";
-import Button from "../components/Button";
 export default {
   name: 'UpdateUser',
   components: {
-  	TitlePage,
-  	Button
+  	TitlePage
   },
   data: function() {
   	return {
-      updateUser:{},
-      firstName:"",
-      lastName:"",
-      address:"",
-      phone:"",
-      email:"",
-      password:"",
-      messageError:""
+      updateProduct:{},
+      title:"",
+      price:"",
+      description:"",
+      image:""
     }
   },
   methods: {
     update: function() {
       const token = localStorage.getItem('token');
-      console.log(this.firstName);
+      console.log(this.title);
       const body = {
-        firstName: this.firstName,
-        lastName: this.lastName,
-        address: this.address,
-        phone: this.phone,
-        email: this.email,
-        password: this.password
+        title: this.title,
+        price: this.price,
+        description: this.description,
+        image: this.image
       }
       const requestOptions = {
         method: "POST",
@@ -69,7 +64,7 @@ export default {
       }
         console.log(JSON.stringify(body));
       const decodeToken = VueJwtDecode.decode(token);
-      fetch(`http://localhost:3000/api/v1/users/edit/${this.$route.params.id}`, requestOptions)
+      fetch(`http://localhost:3000/api/v1/products/edit/${this.$route.params.id}`, requestOptions)
       .then(response => response.json())
       .then(data => {
         console.log(data);
@@ -84,18 +79,18 @@ export default {
   	const token = localStorage.getItem('token');
   	if (token) {
   		const decodeToken = VueJwtDecode.decode(token);
-  		fetch(`http://localhost:3000/api/v1/users/${decodeToken.id}`, {
+  		fetch(`http://localhost:3000/api/v1/products/${this.$route.params.id}`, {
   			headers: {
   				Authorization:token
   			}
   		})
   		.then(res=>res.json())
       .then(data=>{
-      this.lastName = data.lastName;
-      this.firstName = data.firstName;
-      this.address = data.address;
-      this.phone = data.phone;
-      // this.updateUser = data;
+      this.title = data.title;
+      this.price = data.price;
+      this.description = data.description;
+      this.image = data.image;
+      this.updateProduct = data;
       })
     .then(err=>console.log(err));
   	}
@@ -104,7 +99,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.update__account {
+.update__product {
         font-family: 16px;
         margin: 0 auto;
         max-width: 400px;

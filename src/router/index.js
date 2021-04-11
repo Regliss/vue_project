@@ -7,7 +7,6 @@ import User from '../views/User.vue'
 import Product from '../views/Product.vue'
 import Login from '../views/Login.vue'
 import AddAdmin from '../views/AddAdmin.vue'
-import AddProduct from '../views/AddProduct.vue'
 import AuthGuard from '../middleware/auth.js'
 import Cart from '../views/Cart.vue'
 import Signup from '../views/Signup.vue'
@@ -16,7 +15,12 @@ import Cancel from '../views/Cancel.vue'
 import Success from '../views/Success.vue'
 import UsersCRUD from '../views/UsersCRUD.vue'
 import WishList from '../views/WishList.vue'
-
+import ProductsCRUD from '../views/ProductsCRUD.vue'
+import AddProduct from '../views/AddProduct.vue'
+import UpdateProduct from '../views/UpdateProduct.vue'
+import CategoryzCRUD from '../views/CategoryzCRUD.vue'
+import UpdateCategory from '../views/UpdateCategory.vue'
+import AddCategory from '../views/AddCategory.vue'
 
 Vue.use(VueRouter)
 
@@ -60,16 +64,16 @@ const routes = [
     path: '/cart',
     name: 'Cart',
     component: Cart,
-    beforeEnter(to, from, next) {
-      if (!localStorage.getItem('token')) {
-        next({
-          name:"Login"
-        })
-      }
-      else {
-        next();
-      }
-    }
+    // beforeEnter(to, from, next) {
+    //   if (!localStorage.getItem('token')) {
+    //     next({
+    //       name:"Login"
+    //     })
+    //   }
+    //   else {
+    //     next();
+    //   }
+    // }
   },
   {
     path: '/signup',
@@ -112,9 +116,34 @@ const routes = [
     component: UpdateUser
   },
   {
+    path: '/productsCRUD',
+    name: 'ProductsCRUD',
+    component: ProductsCRUD
+  },
+  {
     path: '/addProduct',
     name: 'AddProduct',
     component: AddProduct
+  },
+  {
+    path: '/updateProduct',
+    name: 'UpdateProduct',
+    component: UpdateProduct
+  },
+  {
+    path: '/categoryzCRUD',
+    name: 'CategoryzCRUD',
+    component: CategoryzCRUD
+  },
+  {
+    path: '/addCategory',
+    name: 'AddCategory',
+    component: AddCategory
+  },
+  {
+    path: '/updateCategory',
+    name: 'UpdateCategory',
+    component: UpdateCategory
   },
   {
     path: '/about',

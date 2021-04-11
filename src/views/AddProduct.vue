@@ -3,34 +3,34 @@
 
     <TitlePage title="Ajouter un Produit" /> 
 
-    <form @submit.prevent="addProduct">
-        <p>
+    <b-form-simple @submit.prevent="addProduct">
+      <b-form-group>
         <label htmlFor="title">Titre: </label>
-        <input type="text" v-model="title" name="title">
-        </p>
-        <p>
+        <b-input type="text" v-model="title" name="title"/>
+      </b-form-group>
+      <b-form-group>
         <label htmlFor="price">Prix: </label>
-        <input type="text" v-model="price" name="price"> €
-        </p>
-        <p>
+        <b-input type="text" v-model="price" name="price"/> €
+      </b-form-group>
+      <b-form-group>
         <label htmlFor="description">Description: </label>
-        <input type="text" v-model="description" name="description">
-        </p>
-        <p>
+        <b-input type="text" v-model="description" name="description"/>
+      </b-form-group>
+      <b-form-group>
         <label htmlFor="image">URL image: </label>
-        <input type="text" v-model="image" name="image">
-        </p>
-        <p>
-        <select v-model="category">
+        <b-input type="text" v-model="image" name="image"/>
+      </b-form-group>
+      <b-form-group>
+        <b-select v-model="category">
             <option disabled value="">Catégorie</option>
             <option>A</option>
             <option>B</option>
             <option>C</option>
-        </select>
-        </p>
+        </b-select>
+      </b-form-group>
         <br>     
         <input value="Ajouter" type="submit">
-    </form>
+    </b-form-simple>
     <p v-if="msgErr">
         {{msgErr}}
     </p>
@@ -43,7 +43,7 @@
 import TitlePage from "../components/TitlePage";
   
   export default {
-    name: 'Signup',
+    name: 'AddProduct',
     data: function() {
         return {
             title:"",
@@ -89,7 +89,12 @@ import TitlePage from "../components/TitlePage";
 
 
 <style lang="scss" scoped>
-
+.addProduct__form {
+        font-family: 16px;
+        margin: 0 auto;
+        max-width: 400px;
+        width: 100%;
+    }
 
 
 </style>
