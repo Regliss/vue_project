@@ -1,6 +1,6 @@
 <template>
     <div>
-        <TitlePage title="Payement Accépté" />
+        <TitlePage title="Payement Accepté" />
         <!-- <img
             src="../assets/check-mark-2180770_960_720.webp"
             style="width: 100px"
@@ -76,7 +76,7 @@ export default {
             headers: { "Content-Type": "application/json" },
             body: bodyToSend,
         };
-        fetch(`${apiConfigs.apiUrl}/order`, requestOptions)
+        fetch(`http://localhost:3000/api/v1/order`, requestOptions)
         .then((res) => res.json())
         .catch((err) => console.log(err));
         // this.clearCart()

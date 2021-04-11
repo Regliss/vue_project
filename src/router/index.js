@@ -21,6 +21,8 @@ import UpdateProduct from '../views/UpdateProduct.vue'
 import CategoryzCRUD from '../views/CategoryzCRUD.vue'
 import UpdateCategory from '../views/UpdateCategory.vue'
 import AddCategory from '../views/AddCategory.vue'
+import OrdersCRUD from '../views/OrdersCRUD.vue'
+import UpdateOrder from '../views/UpdateOrder.vue'
 
 Vue.use(VueRouter)
 
@@ -144,6 +146,16 @@ const routes = [
     path: '/updateCategory',
     name: 'UpdateCategory',
     component: UpdateCategory
+  },
+  {
+    path: '/ordersCRUD',
+    name: 'OrdersCRUD',
+    component: OrdersCRUD
+  },
+  {
+    path: '/updateOrder',
+    name: 'UpdateOrder',
+    component: UpdateOrder
   },
   {
     path: '/about',

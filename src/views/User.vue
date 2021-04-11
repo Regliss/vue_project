@@ -71,7 +71,6 @@ export default {
   		.then(data => {
   			this.isLogged = true;
   			this.user = data;
-  			// console.log(this.user.isAdmin);
   		})
   		.catch(err => console.log(err))
   	}

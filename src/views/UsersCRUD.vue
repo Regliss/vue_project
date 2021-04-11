@@ -2,7 +2,7 @@
   <div class="user__crud">
     <TitlePage title="Gestion des utilisateurs" />
     <div style="margin-left: 980px;">
-      <router-link to="/addUser" custom v-slot="{ navigate }">
+      <router-link to="/addAdmin" custom v-slot="{ navigate }">
         <b-button variant="info" @click="navigate" @keypress.enter="navigate" role="link">Ajouter</b-button>
       </router-link>
     </div>

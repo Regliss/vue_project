@@ -3,7 +3,7 @@
 
     <TitlePage title="Ajouter un Produit" /> 
 
-    <b-form-simple @submit.prevent="addProduct">
+    <b-form @submit.prevent="addProduct">
       <b-form-group>
         <label htmlFor="title">Titre: </label>
         <b-input type="text" v-model="title" name="title"/>
@@ -20,17 +20,20 @@
         <label htmlFor="image">URL image: </label>
         <b-input type="text" v-model="image" name="image"/>
       </b-form-group>
+
       <b-form-group>
-        <b-select v-model="category">
-            <option disabled value="">Catégorie</option>
-            <option>A</option>
-            <option>B</option>
-            <option>C</option>
+        <label for="category">Categorie</label>
+        <b-select name="category" v-model="category">
+            <!-- <option disabled value="">Catégorie</option> -->
+            <option v-for="category in categoryzFromApi" v-bind:key="category._id" value="category._id">{{category.title}}</option>
+            <!-- <option>B</option> -->
+            <!-- <option>C</option> -->
         </b-select>
       </b-form-group>
+
         <br>     
         <input value="Ajouter" type="submit">
-    </b-form-simple>
+    </b-form>
     <p v-if="msgErr">
         {{msgErr}}
     </p>
@@ -41,11 +44,13 @@
 <script>
 
 import TitlePage from "../components/TitlePage";
+import ApiCategoryzCrud from "../mixins/ApiCategoryzCrud";
   
   export default {
     name: 'AddProduct',
     data: function() {
         return {
+            categoryzFromApi: [],
             title:"",
             price:"",
             description:"",
@@ -56,6 +61,15 @@ import TitlePage from "../components/TitlePage";
     },
     components: {
       TitlePage
+    },
+    mixins: [ApiCategoryzCrud],
+    created() {
+    this.getCategoryz()
+      .then((data) => {
+        console.log(data);
+        this.categoryzFromApi = data;
+      })
+      .catch(err => console.log(err));
     },
     methods: {
       addProduct: function(e) {

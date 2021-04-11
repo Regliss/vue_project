@@ -13,6 +13,7 @@
           <b-tr>
             <b-th>Id</b-th>
             <b-th>Titre</b-th>
+            <b-th>Catégory</b-th>
             <b-th>Prix</b-th>
             <b-th>Description</b-th>
             <b-th>Image</b-th>
@@ -23,6 +24,7 @@
           <b-tr v-for="product in productsFromApi" :key="product._id">
             <b-td> {{ product._id }} </b-td>
             <b-td> {{ product.title }} </b-td>
+            <b-td> {{ product.category }} </b-td>
             <b-td> {{ product.price | formatPriceDecimal | formatPrice  }} </b-td>
             <b-td> {{ product.description }} </b-td>
             <b-td><img :src="product.image" class="img__product"/></b-td>
