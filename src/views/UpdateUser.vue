@@ -52,7 +52,7 @@ export default {
   methods: {
     update: function() {
       const token = localStorage.getItem('token');
-      console.log(this.firstName);
+      // console.log(this.firstName);
       const body = {
         firstName: this.firstName,
         lastName: this.lastName,
@@ -68,12 +68,12 @@ export default {
         },
         body: JSON.stringify(body)
       }
-        console.log(JSON.stringify(body));
+        // console.log(JSON.stringify(body));
       const decodeToken = VueJwtDecode.decode(token);
-      fetch(`${apiConfigs.apiUrl}/users/edit/${this.$route.params.id}`, requestOptions)
+      fetch(`${apiConfigs.apiUrl}/users/edit/${decodeToken.id}`, requestOptions)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
+        // console.log(data);
         // this.$router.push('/account');
       })
       .catch(err => {
@@ -85,7 +85,7 @@ export default {
   	const token = localStorage.getItem('token');
   	if (token) {
   		const decodeToken = VueJwtDecode.decode(token);
-  		fetch(`${apiConfigs.apiUrl}/users/${this.$route.params.id}`, {
+  		fetch(`${apiConfigs.apiUrl}/users/${decodeToken.id}`, {
   			headers: {
   				Authorization:token
   			}
