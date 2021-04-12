@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import apiConfigs from "../configs/api.configs";
 export default {
 
   name: 'Login',
