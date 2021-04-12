@@ -70,11 +70,11 @@ export default {
       }
         // console.log(JSON.stringify(body));
       const decodeToken = VueJwtDecode.decode(token);
-      fetch(`${apiConfigs.apiUrl}/users/edit/${decodeToken.id}`, requestOptions)
+      fetch(`${apiConfigs.apiUrl}/users/edit/${this.$route.params.id}`, requestOptions)
       .then(response => response.json())
       .then(data => {
         // console.log(data);
-        // this.$router.push('/account');
+        this.$router.push('/account');
       })
       .catch(err => {
         console.log(err)
@@ -83,9 +83,10 @@ export default {
   },
   created() {
   	const token = localStorage.getItem('token');
+    console.log(this.$route.params.id);
   	if (token) {
   		const decodeToken = VueJwtDecode.decode(token);
-  		fetch(`${apiConfigs.apiUrl}/users/${decodeToken.id}`, {
+  		fetch(`${apiConfigs.apiUrl}/users/${this.$route.params.id}`, {
   			headers: {
   				Authorization:token
   			}
@@ -99,7 +100,7 @@ export default {
       this.phone = data.phone;
       // this.updateUser = data;
       })
-    .then(err=>console.log(err));
+    .catch(err=>console.log(err));
   	}
   }
 }

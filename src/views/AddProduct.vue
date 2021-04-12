@@ -93,7 +93,9 @@ import apiConfigs from "../configs/api.configs";
              console.log(bodyToSend)
           fetch(`${apiConfigs.apiUrl}/product`, requestOptions)
           .then(res=>res.json())
-          .then(data=> console.log(data))
+          .then(data=> {
+            this.$router.push("/productsCRUD");
+            console.log(data)})
           .catch(err=>console.log(err))
       }
     },

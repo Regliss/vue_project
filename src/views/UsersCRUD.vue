@@ -31,8 +31,8 @@
             <b-td> {{ user.email }} </b-td>
             <b-td> {{ user.isAdmin }} </b-td>
             <b-td>
-              <router-link to="/updateUser" custom v-slot="{ navigate }">
-                <b-button variant="info" @click="navigate" @keypress.enter="navigate" role="link">Modifier</b-button>
+              <router-link :to="{name:'UpdateUser', params:{id:user._id}}">
+                <b-button variant="info" @click="">Modifier</b-button>
               </router-link>
               <b-button variant="danger" @click="remove(user._id)">Supprimer </b-button>
             </b-td>

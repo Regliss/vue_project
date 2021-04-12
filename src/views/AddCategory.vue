@@ -36,7 +36,9 @@ import apiConfigs from "../configs/api.configs";
           }
           fetch(`${apiConfigs.apiUrl}/categoryz`, requestOptions)
           .then(res=>res.json())
-          .then(data=> console.log(data))
+          .then(data=> {
+            this.$router.push("/categoryzCRUD");
+           console.log(data)})
           .catch(err=>console.log(err))
       }
     },

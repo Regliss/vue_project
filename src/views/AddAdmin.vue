@@ -92,7 +92,7 @@ export default {
           } else {
             let token = data.token;
             localStorage.setItem("token", token);
-            this.$router.push("/usersCrud");
+            this.$router.push("/usersCRUD");
           }
         })
         .catch((err) => console.log(err));
