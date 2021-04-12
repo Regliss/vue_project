@@ -69,8 +69,9 @@ export default {
             products: this.cartArray,
             user: decodedToken.id,
         };
-        console.log("body", body);
+        // console.log("body", body);
         const bodyToSend = JSON.stringify(body);
+        console.log(bodyToSend);
         const requestOptions = {
             method: "POST",
             headers: { "Content-Type": "application/json" },

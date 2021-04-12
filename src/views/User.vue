@@ -74,7 +74,10 @@ export default {
   		})
   		.catch(err => console.log(err))
   	}
-  }
+  },
+  beforeDestroy () {
+        this.$router.go(0);
+    },
 }
 </script>
 

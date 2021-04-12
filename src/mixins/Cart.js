@@ -9,7 +9,7 @@ export default {
 			let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 			let productObject = {
-				id: product._id,
+				_id: product._id,
 				title: product.title,
 				image: product.image,
 				price: product.price,
@@ -18,7 +18,7 @@ export default {
 
 			//findIndex => renvoies l'index ou -1
 			let indexOfexisttingProduct = cart.findIndex(
-				(el) =>  el.id === productObject.id 
+				(el) =>  el._id === productObject._id 
 			)
 
 			if(indexOfexisttingProduct !== -1) {
