@@ -77,7 +77,7 @@ export default {
             headers: { "Content-Type": "application/json" },
             body: bodyToSend,
         };
-        fetch(`http://localhost:3000/api/v1/order`, requestOptions)
+        fetch(`${apiConfigs.apiUrl}/order`, requestOptions)
         .then((res) => res.json())
         .catch((err) => console.log(err));
         // this.clearCart()

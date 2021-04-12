@@ -45,7 +45,7 @@
 
 import TitlePage from "../components/TitlePage";
 import ApiCategoryzCrud from "../mixins/ApiCategoryzCrud";
-  
+import apiConfigs from "../configs/api.configs";  
   export default {
     name: 'AddProduct',
     data: function() {
@@ -91,7 +91,7 @@ import ApiCategoryzCrud from "../mixins/ApiCategoryzCrud";
               body: bodyToSend
           }
              console.log(bodyToSend)
-          fetch("http://localhost:3000/api/v1/product", requestOptions)
+          fetch(`${apiConfigs.apiUrl}/product`, requestOptions)
           .then(res=>res.json())
           .then(data=> console.log(data))
           .catch(err=>console.log(err))

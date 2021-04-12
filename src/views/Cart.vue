@@ -92,7 +92,7 @@ export default {
   	},
 	checkout: async function(){
 	  	const stripe = await stripePromise;
-	  	const response = await fetch('http://localhost:3000/api/v1/create-checkout-session', { 
+	  	const response = await fetch('${apiConfigs.apiUrl}/create-checkout-session', { 
 	  		method: 'POST',
 	  		headers: {
 	  			"Content-type":"application/json"

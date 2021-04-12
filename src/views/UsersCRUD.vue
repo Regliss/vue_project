@@ -73,7 +73,7 @@ export default {
   },
   methods: {
 	    remove(id) {
-	        fetch(`http://localhost:3000/api/v1/users/delete/${id}`)
+	        fetch(`${apiConfigs.apiUrl}/users/delete/${id}`)
 	            .then((res) => res.json())
 	            .catch((err) => console.log(err));
 	            this.$router.go();

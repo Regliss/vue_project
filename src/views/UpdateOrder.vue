@@ -27,7 +27,6 @@
 <script>
 import apiConfigs from "../configs/api.configs";
 import TitlePage from "../components/TitlePage";
-
 export default {
     components: {
         TitlePage,
@@ -53,7 +52,7 @@ export default {
                 headers: { "Content-Type": "application/json" },
                 body: bodyToSend,
             };
-            fetch(`http://localhost:3000/api/v1/orders/update/${order}`, requestOptions)
+            fetch(`${apiConfigs.apiUrl}/orders/update/${order}`, requestOptions)
                 .then((res) => res.json())
                 .then((data) => console.log(data))
                 .catch((err) => console.log(err));
@@ -63,7 +62,7 @@ export default {
     created() {
         const order = localStorage.getItem("order");
         if (order) {
-            fetch(`http://localhost:3000/api/v1/order/${order}`)
+            fetch(`${apiConfigs.apiUrl}/order/${order}`)
                 .then((res) => res.json())
                 .then((data) => {
                     this._id = data._id;

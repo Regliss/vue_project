@@ -9,9 +9,9 @@
     </div>
       Ancienne recherche = {{oldSearchValue}} -->
 		<ProductsGrid :productsArray="filteredShop" />
-  <router-link to="/addProduct" custom v-slot="{ navigate }">
+  <!-- <router-link to="/addProduct" custom v-slot="{ navigate }">
       <button @click="navigate" @keypress.enter="navigate" role="link">Ajouter un produit</button>
-  </router-link>
+  </router-link> -->
   </div>
 </template>
 

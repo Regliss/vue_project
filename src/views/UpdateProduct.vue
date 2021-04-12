@@ -31,6 +31,7 @@
 <script>
 import VueJwtDecode from 'vue-jwt-decode';
 import TitlePage from "../components/TitlePage";
+import apiConfigs from "../configs/api.configs";
 export default {
   name: 'UpdateUser',
   components: {
@@ -64,7 +65,7 @@ export default {
       }
         console.log(JSON.stringify(body));
       const decodeToken = VueJwtDecode.decode(token);
-      fetch(`http://localhost:3000/api/v1/products/edit/${this.$route.params.id}`, requestOptions)
+      fetch(`${apiConfigs.apiUrl}/products/edit/${this.$route.params.id}`, requestOptions)
       .then(response => response.json())
       .then(data => {
         console.log(data);
@@ -79,7 +80,7 @@ export default {
   	const token = localStorage.getItem('token');
   	if (token) {
   		const decodeToken = VueJwtDecode.decode(token);
-  		fetch(`http://localhost:3000/api/v1/products/${this.$route.params.id}`, {
+  		fetch(`${apiConfigs.apiUrl}/products/${this.$route.params.id}`, {
   			headers: {
   				Authorization:token
   			}

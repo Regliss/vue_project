@@ -30,6 +30,7 @@
 import VueJwtDecode from 'vue-jwt-decode';
 import TitlePage from "../components/TitlePage";
 import Button from "../components/Button";
+import apiConfigs from "../configs/api.configs";
 export default {
   name: 'UpdateUser',
   components: {
@@ -69,7 +70,7 @@ export default {
       }
         console.log(JSON.stringify(body));
       const decodeToken = VueJwtDecode.decode(token);
-      fetch(`http://localhost:3000/api/v1/users/edit/${this.$route.params.id}`, requestOptions)
+      fetch(`${apiConfigs.apiUrl}/users/edit/${this.$route.params.id}`, requestOptions)
       .then(response => response.json())
       .then(data => {
         console.log(data);
@@ -84,13 +85,14 @@ export default {
   	const token = localStorage.getItem('token');
   	if (token) {
   		const decodeToken = VueJwtDecode.decode(token);
-  		fetch(`http://localhost:3000/api/v1/users/${decodeToken.id}`, {
+  		fetch(`${apiConfigs.apiUrl}/users/${this.$route.params.id}`, {
   			headers: {
   				Authorization:token
   			}
   		})
-  		.then(res=>res.json())
+      .then(res=>res.json())
       .then(data=>{
+      console.log(data);
       this.lastName = data.lastName;
       this.firstName = data.firstName;
       this.address = data.address;

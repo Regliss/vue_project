@@ -79,7 +79,7 @@ export default {
         headers: { "Content-Type": "application/json" },
         body: bodyToSend,
       };
-      fetch(`http://localhost:3000/api/v1/users`, requestOptions)
+      fetch(`${apiConfigs.apiUrl}/users`, requestOptions)
         .then((res) => res.json())
         .then((data) => {
         	console.log(data);

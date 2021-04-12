@@ -10,7 +10,7 @@
 </template>
 <script>
 import TitlePage from "../components/TitlePage";
-  
+import apiConfigs from "../configs/api.configs";
   export default {
     name: 'AddCategory',
     data: function() {
@@ -34,7 +34,7 @@ import TitlePage from "../components/TitlePage";
               },
               body: bodyToSend
           }
-          fetch("http://localhost:3000/api/v1/categoryz", requestOptions)
+          fetch(`${apiConfigs.apiUrl}/categoryz`, requestOptions)
           .then(res=>res.json())
           .then(data=> console.log(data))
           .catch(err=>console.log(err))

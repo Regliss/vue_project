@@ -27,7 +27,7 @@ export default {
   	}
   },
   created() {
-  	fetch(`http://localhost:3000/api/v1/products/${this.$route.params.id}`)
+  	fetch(`${apiConfigs.apiUrl}/products/${this.$route.params.id}`)
   	.then(res=>res.json())
   	.then(data=>{
   		this.productItem = data;

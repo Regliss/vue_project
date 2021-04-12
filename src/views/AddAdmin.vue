@@ -48,7 +48,6 @@
 <script>
 import apiConfigs from "../configs/api.configs";
 import TitlePage from "../components/TitlePage";
-
 export default {
   components: {
     TitlePage,
@@ -84,7 +83,7 @@ export default {
         headers: { "Content-Type": "application/json" },
         body: bodyToSend,
       };
-      fetch(`http://localhost:3000/api/v1/users/add`, requestOptions)
+      fetch(`${apiConfigs.apiUrl}/users/add`, requestOptions)
         .then((res) => res.json())
         .then((data) => {
         	console.log(data);

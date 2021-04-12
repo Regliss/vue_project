@@ -39,7 +39,7 @@ export default {
 			//le réinsérer localstorage.setItem
 			let cart = JSON.parse(localStorage.getItem('cart'));
 			const filteredCard = cart.filter((item) => {
-				return item.id !== product.id;
+				return item._id !== product._id;
 			});
 			localStorage.setItem('cart', JSON.stringify(filteredCard));
 		},
@@ -50,14 +50,14 @@ export default {
 			let cart = JSON.parse(localStorage.getItem('cart'));
 			if (product.qty > 1) {
 				let productObject = {
-					id: product.id,
+					_id: product._id,
 					title: product.title,
 					image: product.image,
 					price: product.price,
 					qty: 1
 				}
 
-				let indexOfexisttingProduct = cart.findIndex((el) => el.id === productObject.id);
+				let indexOfexisttingProduct = cart.findIndex((el) => el._id === productObject._id);
 				console.log(indexOfexisttingProduct);
 				if (indexOfexisttingProduct !== -1) {
 					cart[indexOfexisttingProduct].qty--;
@@ -68,13 +68,13 @@ export default {
 		addOneQty(product) {
 			let cart = JSON.parse(localStorage.getItem('cart'));
 			let productObject = {
-				id: product.id,
+				_id: product._id,
 				title: product.title,
 				image: product.image,
 				price: product.price,
 				qty: 1
 			}
-			let indexOfexisttingProduct = cart.findIndex((el) => el.id === productObject.id);
+			let indexOfexisttingProduct = cart.findIndex((el) => el._id === productObject._id);
 			console.log(indexOfexisttingProduct);
 			if (indexOfexisttingProduct !== -1) {
 				cart[indexOfexisttingProduct].qty++;

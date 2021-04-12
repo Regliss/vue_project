@@ -18,6 +18,7 @@
 <script>
 import VueJwtDecode from 'vue-jwt-decode';
 import TitlePage from "../components/TitlePage";
+import apiConfigs from "../configs/api.configs";
 export default {
   name: 'UpdateCategory',
   components: {
@@ -43,7 +44,7 @@ export default {
         body: JSON.stringify(body)
       }
         console.log(JSON.stringify(body));
-      fetch(`http://localhost:3000/api/v1/categoryz/edit/${this.$route.params.id}`, requestOptions)
+      fetch(`${apiConfigs.apiUrl}/categoryz/edit/${this.$route.params.id}`, requestOptions)
       .then(response => response.json())
       .then(data => {
         console.log(data);
@@ -55,7 +56,7 @@ export default {
     }
   },
   created() {
-  		fetch(`http://localhost:3000/api/v1/categoryz/${this.$route.params.id}`)
+  		fetch(`${apiConfigs.apiUrl}/categoryz/${this.$route.params.id}`)
       .then(res=>res.json())
       .then(data=>{
         console.log(this.$route.params.id);
