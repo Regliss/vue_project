@@ -20,5 +20,11 @@ npm run build
 https://vue--project.herokuapp.com/#/
 ```
 
+### Compte admin
+```
+vincent.zerbib@gmail.com
+!Vincent123
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
