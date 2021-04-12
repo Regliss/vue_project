@@ -22,6 +22,7 @@
 </template>
 <script>
 import VueJwtDecode from 'vue-jwt-decode';
+import apiConfigs from "../configs/api.configs";
 export default {
 
   name: 'Header',
@@ -40,7 +41,7 @@ export default {
     const token = localStorage.getItem('token');
     if (token) {
       const decodeToken = VueJwtDecode.decode(token);
-      fetch(`http://localhost:3000/api/v1/users/${decodeToken.id}`, {
+      fetch(`${apiConfigs.apiUrl}/users/${decodeToken.id}`, {
         headers: {
           Authorization:token
         }
