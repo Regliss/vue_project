@@ -48,6 +48,7 @@
 import { loadStripe } from '@stripe/stripe-js';
 const stripePromise = loadStripe('pk_test_51IYB3kKHE4A4HHrOPwry6jr7QSnFpODKJliEseS4NYAxmsuAnRfVkNgfdDcSEsMPPOqCEc5NhCGowDFhoy5D9zlu00jW1rgElH');
 import Cart from "../mixins/Cart";
+import apiConfigs from "../configs/api.configs";
 export default {
 
   name: 'Cart',
